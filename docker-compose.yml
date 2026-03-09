@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+    container_name: betalent-app
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/var/www
+    depends_on:
+      - db
+      - gateways-mock
+
+  db:
+    image: mysql:8.0
+    container_name: betalent-db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: betalent
+      MYSQL_ROOT_PASSWORD: secret
+    volumes:
+      - dbdata:/var/lib/mysql
+
+  gateways-mock:
+    image: gateways-mock
+    container_name: betalent-gateways
+    ports:
+      - "3001:3001"
+      - "3002:3002"
+
+volumes:
+  dbdata:
