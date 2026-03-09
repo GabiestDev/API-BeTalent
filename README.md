@@ -1,4 +1,4 @@
-% Teste Prático Back-end BeTalent — Nível 2
+Teste Prático Back-end BeTalent — Nível 2
 
 Gabriel Neto
 
